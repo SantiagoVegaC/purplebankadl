@@ -1,5 +1,6 @@
+import React from 'react'
 import { shallow } from 'enzyme'
-import Dashboard from '../../../components/Dashboard/Dashboard'
+import Dashboard from '../../../components/Dashboard/Dashboard.component'
 import ProviderMock from '../../../__mocks__/ProviderMock'
 
 const ProviderComponet = () => (
@@ -10,6 +11,8 @@ const ProviderComponet = () => (
 
 const DashboardShallow = shallow(<ProviderComponet />)
 
-test('Render Dashboard component', () => {
-  expect(DashboardShallow).toHaveLength(1)
+describe('Test to Dashboard component', () => {
+  test('Render Dashboard component', () => {
+    expect(DashboardShallow).toHaveLength(1)
+  })
 })

@@ -46,15 +46,13 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "jest": "^26.6.3"
-  },
   "jest": {
     "verbose": true,
     "setupFilesAfterEnv": [
       "<rootDir>/src/__test__/setupTest.js"
     ],
     "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
       "\\.(styl|css)$": "<rootDir>/src/__mocks__/styleMock.js"
     }
   }
