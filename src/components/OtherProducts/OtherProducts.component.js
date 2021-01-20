@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import './OtherProducts.scss'
+import './OtherProducts.styles.js'
+import {
+  OtherProductsContainer,
+  Back,
+  OtherProductsData,
+  OtherProductsDataInfo,
+} from './OtherProducts.styles.js'
 import { replaceNumbers } from '../../helpers/replaceNumbers'
 import { getProductType } from '../../helpers/getProductType'
 import { additionalInfo } from '../../helpers/additionalInfo'
@@ -43,10 +49,13 @@ const OtherProducts = () => {
   }
 
   return (
-    <div className="OtherProducts">
-      <div className="OtherProducts-data">
+    <OtherProductsContainer>
+      <Back>
+        <a href="/">{'<'} Volver</a>
+      </Back>
+      <OtherProductsData>
         {otherData?.map((info, index) => (
-          <div className="OtherProducts-data-info" key={index}>
+          <OtherProductsDataInfo key={index}>
             <p>
               <b>Tipo:</b> {getProductType(info.product.type)}
             </p>
@@ -77,19 +86,17 @@ const OtherProducts = () => {
               <b>Entidad:</b> {getEntityType(info.product.issuer)}
             </p>
             <button
-              className="read-more-link"
+              className="button otherBanks"
               onClick={() => {
                 showInfo(index)
               }}>
-              <h2>
-                {seeMore && seeIndex === index ? 'Ver menos ▲' : 'Ver más ▼'}
-              </h2>
+              {seeMore && seeIndex === index ? 'Ver menos ▲' : 'Ver más ▼'}
             </button>
             {seeMore && seeIndex === index && additionalInfo(info)}
-          </div>
+          </OtherProductsDataInfo>
         ))}
-      </div>
-    </div>
+      </OtherProductsData>
+    </OtherProductsContainer>
   )
 }
 

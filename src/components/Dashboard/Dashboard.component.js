@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './Dashboard.scss'
+import {
+  DashboardContainer,
+  DashboardOtherProducts,
+  DashboardData,
+  DashboardDataInfo,
+} from './Dashboard.styles'
 import { replaceNumbers } from '../../helpers/replaceNumbers'
 import { getProductType } from '../../helpers/getProductType'
 import { additionalInfo } from '../../helpers/additionalInfo'
@@ -43,15 +48,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="Dashboard">
-        <div className="Dashboard-otherProducts">
-          <a href="/otherProducts">Mira tus productos de tus otras entidades</a>
-        </div>
-        <div className="Dashboard-data">
+      <DashboardContainer>
+        <DashboardOtherProducts>
+          <a href="/otherProducts">Otros productos &gt;</a>
+        </DashboardOtherProducts>
+        <DashboardData>
           {purpleData?.map((purpleBank, index) => (
-            <div className="Dashboard-data-info" key={index}>
+            <DashboardDataInfo key={index}>
               <p>
-                <b>Tipo:</b> {getProductType(purpleBank.product.type)}
+                <b>{getProductType(purpleBank.product.type)}</b>
+                <br />
+                Purple Bank
               </p>
               <p>
                 <b>No.:&nbsp;</b>
@@ -77,23 +84,18 @@ const Dashboard = () => {
                 {moment(purpleBank.due_date).format(formatDay)}
               </p>
 
-              <p>
-                <b>Entidad:</b> Purple Bank
-              </p>
               <button
-                className="read-more-link"
+                className="button purpleBank"
                 onClick={() => {
                   showInfo(index)
                 }}>
-                <h2>
-                  {seeMore && seeIndex === index ? 'Ver menos ▲' : 'Ver más ▼'}
-                </h2>
+                {seeMore && seeIndex === index ? 'VER MENOS ' : 'VER MÁS '}
               </button>
               {seeMore && seeIndex === index && additionalInfo(purpleBank)}
-            </div>
+            </DashboardDataInfo>
           ))}
-        </div>
-      </div>
+        </DashboardData>
+      </DashboardContainer>
     </>
   )
 }

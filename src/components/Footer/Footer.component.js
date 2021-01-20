@@ -1,5 +1,5 @@
 import React from 'react'
-import './Footer.scss'
+import { FooterContainer } from './Footer.styles'
 
 /** @description This functional component is the footer component to the website
  *  @version 1.0.0
@@ -12,9 +12,9 @@ import './Footer.scss'
  **/
 const Footer = () => {
   return (
-    <div className="Footer">
+    <FooterContainer>
       Purple Bank | Copyright 2021 © | Developed by: SVC
-    </div>
+    </FooterContainer>
   )
 }
 
