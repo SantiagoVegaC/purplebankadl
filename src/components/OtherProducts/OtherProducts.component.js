@@ -31,7 +31,7 @@ const OtherProducts = () => {
   const [seeMore, setSeeMore] = useState(false)
   const [seeIndex, setIndex] = useState()
   const dispatch = useDispatch()
-  const otherData = useSelector(({ purpleData }) => purpleData.otherData)
+  const otherData = useSelector(({ purpleData }) => purpleData?.otherData)
 
   useEffect(() => {
     if (!otherData || otherData.length <= 0) {
@@ -57,7 +57,9 @@ const OtherProducts = () => {
         {otherData?.map((info, index) => (
           <OtherProductsDataInfo key={index}>
             <p>
-              <b>Tipo:</b> {getProductType(info.product.type)}
+              <b> {getProductType(info.product.type)}</b>
+              <br />
+              {getEntityType(info.product.issuer)}
             </p>
             <p>
               <b>No.:&nbsp;</b>
@@ -82,15 +84,12 @@ const OtherProducts = () => {
               {moment(info.due_date).format(formatDay)}
             </p>
 
-            <p>
-              <b>Entidad:</b> {getEntityType(info.product.issuer)}
-            </p>
             <button
               className="button otherBanks"
               onClick={() => {
                 showInfo(index)
               }}>
-              {seeMore && seeIndex === index ? 'Ver menos ▲' : 'Ver más ▼'}
+              {seeMore && seeIndex === index ? 'VER MENOS ' : 'VER MÁS '}
             </button>
             {seeMore && seeIndex === index && additionalInfo(info)}
           </OtherProductsDataInfo>

@@ -29,7 +29,7 @@ const Dashboard = () => {
   const [seeMore, setSeeMore] = useState(false)
   const [seeIndex, setIndex] = useState()
   const dispatch = useDispatch()
-  const purpleData = useSelector(({ purpleData }) => purpleData.data)
+  const purpleData = useSelector(({ purpleData }) => purpleData?.data)
 
   useEffect(() => {
     if (!purpleData || purpleData.length <= 0) {
